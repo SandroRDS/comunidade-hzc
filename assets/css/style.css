@@ -10,6 +10,15 @@ body
     font-family: "Open Sans", 'icones', sans-serif;
 }
 
+@media screen and (min-width: 1440px)
+{
+    body
+    {
+        display: grid;
+        grid-template-columns: auto 1fr;
+    }
+}
+
 .cabecalho
 {
     width: 100%;
@@ -36,12 +45,77 @@ body
     width: 60px;
 }
 
+.cabecalho .perfil
+{
+    display: none;
+}
+
 
 .cabecalho #notificacao i::before
 {
     font-family: 'icones';
     content: "\e906";
     font-size: 24px;
+}
+
+@media screen and (min-width: 1440px)
+{
+    .cabecalho
+    {
+        background-color: #1D232A;
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: flex-end;
+        grid-column: 2;
+        column-gap: 32px;
+        padding: 16px 60px;
+        height: 80px;
+        box-sizing: border-box;
+        position: sticky;
+        top: 0;
+    }
+
+    .cabecalho #menu
+    {
+        display: none;
+    }
+
+    .cabecalho .logo
+    {
+        display: none;
+    }
+
+    .cabecalho .perfil
+    {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        column-gap: 8px;
+        align-items: center;
+        justify-self: flex-end;
+        color: #95999C;
+        padding: 8px 3px;
+        border-right: 1px solid #95999C;
+        grid-column: 1;
+    }
+
+    .cabecalho .perfil::before
+    {
+        content: '';
+        display: block;
+        width: 32px;
+        height: 32px;
+        background: url('../img/profile_1.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .cabecalho .perfil::after
+    {
+        content: '\e90d';
+        font-size: 1.5rem;
+        color: #FFFFFF;
+    }
 }
 
 #menu_lateral
@@ -127,6 +201,19 @@ body
     content: "\e90a";
 }
 
+@media screen and (min-width: 1440px) 
+{
+    #menu_lateral
+    {
+        position: sticky;
+        top: 0;
+        transform: none;
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        width: 25vw;
+    }    
+}
+
 .principal
 {
     width: 100%;
@@ -148,6 +235,16 @@ body
     width: 100%;
     margin: auto;
     overflow: hidden;
+}
+
+.principal .banner-desktop
+{
+    display: none;
+}
+
+.principal .banner-mobile
+{
+    display: block;
 }
 
 .cartao .conteudo
@@ -245,6 +342,75 @@ body
     margin-right: 10px;
 }
 
+.recentes
+{
+    display: none;
+}
+
+@media screen and (min-width: 1440px) 
+{
+    .principal .recentes
+    {
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        align-self: flex-start;
+        row-gap: 24px;
+        width: 256px;
+        padding: 16px;
+        box-sizing: border-box;
+        background-color: #2C343A;
+        border-radius: 16px;
+    }
+
+    .videos + .recentes
+    {
+        grid-area: videos-recentes;
+    }
+
+    .recentes .lista
+    {
+        display: grid;
+        row-gap: 16px;
+        grid-column: span 2;
+    }
+
+    .recentes .more
+    {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #0480DC;
+        justify-self: flex-end;
+    }
+
+    .recentes .item
+    {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 8px;
+    }
+
+    .item .tumbnail
+    {
+        grid-row: span 2;
+        width: 32px;
+    }
+
+    .item .titulo
+    {
+        font-size: 0.9rem;
+        font-weight: 700;
+        line-height: 1.2rem;
+    }
+
+    .item .autor
+    {
+        font-size: 0.8rem;
+        color: #95999C;
+    }
+}
+
+
 .principal .secao
 {
     display: grid;
@@ -265,4 +431,82 @@ body
 .conteudo .botao
 {
     justify-self: flex-end;
+}
+
+@media screen and (min-width: 1440px) 
+{
+    .principal
+    {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 32px;
+        grid-template-areas: 
+        "titulo-pagina titulo-pagina titulo-pagina"
+        "cartao-destaque-videos cartao-destaque-videos videos-recentes"
+        "secao-videos secao-videos secao-videos"
+        "camisas-recentes cartao-destaque-camisas cartao-destaque-camisas"
+        "secao-camisas secao-camisas secao-camisas";
+    }
+
+    .principal .titulo_pagina
+    {
+        grid-area: titulo-pagina;
+    }
+
+    .principal .videos
+    {
+        grid-area: cartao-destaque-videos;
+    }
+
+    .principal .secao_videos
+    {
+        grid-area: secao-videos;
+    }
+
+    .principal .secao_videos
+    {
+        grid-area: secao-videos;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 16px;
+    }
+
+    .principal .secao .titulo_secao
+    {
+        grid-column: span 4;
+    }
+
+    .principal .camisas-recentes
+    {
+        grid-area: camisas-recentes;
+    }
+
+    .principal .camisas
+    {
+        grid-area: cartao-destaque-camisas;
+    }
+
+    .principal .secao_camisas
+    {
+        grid-area: secao-camisas;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 16px;
+    }
+
+    .principal .banner-desktop
+    {
+        display: block;
+    }
+
+    .principal .banner-mobile
+    {
+        display: none;
+    }
+
+    .principal .conteudo .botao_destaque
+    {
+        grid-column: 1;
+        padding: 16px;
+    }
 }
